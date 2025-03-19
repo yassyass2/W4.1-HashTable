@@ -74,7 +74,7 @@ public class HashTable<K, V> : IHashTable<K, V>
         var temp = (index+1) % buckets.Length;
         while (temp != index){
             if (buckets[temp] != null && buckets[temp].Key.Equals(key)){
-                buckets[temp] = null
+                buckets[temp] = null;
                 return true;
             }
             temp = (temp+1) % buckets.Length;
