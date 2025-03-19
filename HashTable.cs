@@ -33,13 +33,13 @@ public class HashTable<K, V> : IHashTable<K, V>
             return true;
         }
 
-        var temp = index+1 % buckets.Length;
+        var temp = (index+1) % buckets.Length;
         while (temp != index){
             if (buckets[temp] == null){
                 buckets[temp] = new Entry<K, V>(key, value);
                 return true;
             }
-            temp = temp+1 % buckets.Length;
+            temp = (temp+1) % buckets.Length;
         }
         return false;
     }
@@ -51,12 +51,12 @@ public class HashTable<K, V> : IHashTable<K, V>
             return buckets[index].Value;
         }
 
-        var temp = index+1 % buckets.Length;
+        var temp = (index+1) % buckets.Length;
         while (temp != index){
             if (buckets[temp] != null && buckets[temp].Key.Equals(key)){
                 return buckets[temp].Value;
             }
-            temp = temp+1 % buckets.Length;
+            temp = (temp+1) % buckets.Length;
         }
         return default;
     }
