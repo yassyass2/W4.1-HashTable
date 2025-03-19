@@ -20,17 +20,44 @@ public class HashTable<K, V> : IHashTable<K, V>
     protected int getIndex(K key)
     {
         int hashCode = Math.Abs(key.GetHashCode());
-        throw new NotImplementedException();
+        return hashCode % buckets.Length;
     }
 
     public bool Add(K key, V value)
     {
-        throw new NotImplementedException();
+        int index = getIndex(key);
+        if (Find(key) != null) return false;
+
+        if (buckets[index] == null){
+            buckets[index] = new Entry<K, V>(key, value);
+            return true;
+        }
+
+        var temp = index+1;
+        while (temp != index){
+            if (buckets[temp] == null){
+                buckets[temp] = new Entry<K, V>(key, value);
+            }
+            temp++;
+        }
+        return false;
     }
 
     public V? Find(K key)
     {
-        throw new NotImplementedException();
+        int index = getIndex(key);
+        if (buckets[index].Key == key){
+            return buckets[index].Value;
+        }
+
+        var temp = index+1;
+        while (temp != index){
+            if (buckets[temp].Key == key){
+                return buckets[temp].Value;
+            }
+            temp++;
+        }
+        return default;
     }
 
     public bool Delete(K key)
