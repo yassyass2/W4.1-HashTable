@@ -63,7 +63,7 @@ public class HashTable<K, V> : IHashTable<K, V>
 
     public bool Delete(K key)
     {
-        if (Find(key) != null) return false;
+        if (Find(key) == null) return false;
         int index = getIndex(key);
 
         if (buckets[index] != null && buckets[index].Key.Equals(key)){
