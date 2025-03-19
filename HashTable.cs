@@ -53,7 +53,7 @@ public class HashTable<K, V> : IHashTable<K, V>
 
         var temp = index+1;
         while (temp != index){
-            if (buckets[temp].Key.Equals(key)){
+            if (buckets[temp] != null && buckets[temp].Key.Equals(key)){
                 return buckets[temp].Value;
             }
             temp++;
