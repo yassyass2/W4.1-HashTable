@@ -47,7 +47,7 @@ public class HashTable<K, V> : IHashTable<K, V>
     public V? Find(K key)
     {
         int index = getIndex(key);
-        if (buckets[index].Key.Equals(key)){
+        if (buckets[index] != null && buckets[index].Key.Equals(key)){
             return buckets[index].Value;
         }
 
