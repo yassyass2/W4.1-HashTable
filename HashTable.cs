@@ -37,8 +37,9 @@ public class HashTable<K, V> : IHashTable<K, V>
         while (temp != index){
             if (buckets[temp] == null){
                 buckets[temp] = new Entry<K, V>(key, value);
+                return true;
             }
-            temp++;
+            temp = temp+1 % buckets.Length;
         }
         return false;
     }
