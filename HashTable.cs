@@ -46,13 +46,13 @@ public class HashTable<K, V> : IHashTable<K, V>
     public V? Find(K key)
     {
         int index = getIndex(key);
-        if (buckets[index].Key == key){
+        if (buckets[index].Key.Equals(key)){
             return buckets[index].Value;
         }
 
         var temp = index+1;
         while (temp != index){
-            if (buckets[temp].Key == key){
+            if (buckets[temp].Key.Equals(key)){
                 return buckets[temp].Value;
             }
             temp++;
